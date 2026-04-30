@@ -1,0 +1,279 @@
+<!doctype html>
+<html data-theme="" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+
+      document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("themeDropdown");
+        if (!dropdown) return;
+
+        // Close if click is outside the dropdown
+        if (!dropdown.contains(event.target)) {
+          dropdown.removeAttribute("open");
+        }
+      });
+    </script>
+    <link rel="icon" type="image/x-icon" href="./static/images/avatar.JPG" />
+    <link rel="stylesheet" href="./static/css/src/output.css" />
+    <title>Ronak's Page</title>
+  </head>
+  <body>
+    <nav id="nav" class="max-w-full">
+      <div class="navbar bg-base-200 pt-5">
+        <div class="flex-1">
+          <a href="index.html" class="btn rounded-full text-xl">Ronak Verma</a>
+        </div>
+        <a
+          href="./static/resume/Ronak_Verma_Resume.pdf"
+          target="_blank"
+          class="btn btn-sm"
+        >
+          Resume<svg
+            class="w-4 h-4 -rotate-45"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M13.3 17.275q-.3-.3-.288-.725.013-.425.313-.725L16.15 13H5q-.425 0-.713-.288Q4 12.425 4 12t.287-.713Q4.575 11 5 11h11.15l-2.825-2.825q-.3-.3-.3-.713 0-.412.3-.712t.713-.3q.412 0 .712.3L19.3 11.3q.15.15.213.325.062.175.062.375t-.062.375q-.063.175-.213.325l-4.55 4.55q-.3.3-.725.3-.425 0-.725-.3Z"
+            />
+          </svg>
+        </a>
+        <div class="flex-none px-5">
+          <details id="themeDropdown" class="dropdown">
+            <summary class="btn rounded-full text-lg w-24 bg-base-300">
+              theme
+            </summary>
+            <ul class="menu dropdown-content z-1 justify-items-start">
+              <li>
+                <button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('dark')"
+                >
+                  dark</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('light')"
+                >
+                  light</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('valentine')"
+                >
+                  valentine</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('aqua')"
+                >
+                  aqua</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('forest')"
+                >
+                  forest</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('coffee')"
+                >
+                  coffee
+                </button>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </nav>
+    <!-- add the projects page from here, the upper html is necessary for daisyui and the nav itself -->
+    <section name="projects">
+      <section class="bg-base-200 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 py-16">
+          <!-- Page title -->
+          <div class="text-center text-4xl font-bold py-6">
+            <h1>Projects</h1>
+          </div>
+
+          <!-- Cards grid -->
+          <!-- Card 1 -->
+          <details
+            class="collapse collapse-arrow bg-base-100 border border-base-300"
+          >
+            <summary
+              class="collapse-title text-lg font-semibold flex place-items-start justify-items-start columns-3"
+            >
+              <div class="col-span-1 px-5 max-w-fit">
+                <div class="avatar">
+                  <div class="w-20 rounded">
+                    <img src="./static/images/tournament.png" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 w-full">
+                <h1 class="text-2xl">Tournament Tracker</h1>
+                <h3>A tournament management software</h3>
+              </div>
+            </summary>
+            <div
+              class="collapse-content text-sm flex place-items-start justify-items-start"
+            >
+              <div class="w-full px-5">
+                <div class="features-list">
+                  <ul class="text-base-content md:text-lg">
+                    <li>• Create, manage and run tournaments effortlessly.</li>
+                    <li>• Easy to use and understand UI.</li>
+                    <li>
+                      • Offers both database as well as csv format data storage
+                      for tournament data.
+                    </li>
+                    <li>
+                      • Sends emails to the participants and updates on the
+                      tournament matches.
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tools-list flex flex-row space-x-5 pt-5">
+                  <!-- tool-1 -->
+                  <div
+                    class="btn btn-disabled rounded-xl w-fit flex justify-items-start"
+                  >
+                    <div class="w-7 rounded-full p-0">
+                      <img src="./static/images/c-sharp.png" />
+                    </div>
+                    <span class="text-base-content">WinForms</span>
+                  </div>
+                  <!-- tool-2 -->
+                  <div
+                    class="btn btn-disabled rounded-xl w-fit flex justify-items-start"
+                  >
+                    <div class="w-7 rounded-full p-0">
+                      <img src="./static/images/sql.png" />
+                    </div>
+                    <span class="text-base-content">MSSQL</span>
+                  </div>
+                </div>
+
+                <div class="project-links pt-5">
+                  <div
+                    class="rounded-full border-2 w-11 p-1 items-center justify-items-center hover:bg-base-300 border-base-200"
+                  >
+                    <div class="rounded-full bg-base-300 w-6 m-1">
+                      <a
+                        href="https://github.com/TheGreenSlash/TournamentApp"
+                        target="_blank"
+                      >
+                        <img
+                          class="mask mask-circle m-0"
+                          src="./static/images/github-logo.svg"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+          <!-- card-2 -->
+          <details
+            class="collapse collapse-arrow bg-base-100 border border-base-300"
+          >
+            <summary
+              class="collapse-title text-lg font-semibold flex place-items-start justify-items-start columns-3"
+            >
+              <div class="col-span-1 px-5 max-w-fit">
+                <div class="avatar">
+                  <div class="w-20 rounded">
+                    <img src="./static/images/clerkly.png" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-2 w-full">
+                <h1 class="text-2xl">Clerkly</h1>
+                <h3>A small scale ERP</h3>
+              </div>
+            </summary>
+            <div
+              class="collapse-content text-sm flex place-items-start justify-items-start"
+            >
+              <div class="w-full px-5">
+                <div class="features-list">
+                  <ul class="text-base-content md:text-lg">
+                    <li>
+                      • Business management service for small scale offices.
+                    </li>
+                    <li>
+                      • Realtime invoicing and payroll systems for efficient
+                      workflow.
+                    </li>
+                    <li>
+                      • Built in reports systems for managerial decisions.
+                    </li>
+                    <li>
+                      • Clean and easy to understand UI offers low floor for
+                      learning.
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tools-list flex flex-row space-x-5 pt-5">
+                  <!-- tool-1 -->
+                  <div
+                    class="btn btn-disabled rounded-xl w-fit flex justify-items-start"
+                  >
+                    <div class="w-7 rounded-full p-0">
+                      <img src="./static/images/c-sharp.png" />
+                    </div>
+                    <span class="text-base-content">WinForms</span>
+                  </div>
+                  <!-- tool-2 -->
+                  <div
+                    class="btn btn-disabled rounded-xl w-fit flex justify-items-start"
+                  >
+                    <div class="w-7 rounded-full p-0">
+                      <img src="./static/images/sql.png" />
+                    </div>
+                    <span class="text-base-content">MSSQL</span>
+                  </div>
+                </div>
+
+                <div class="project-links pt-5">
+                  <div
+                    class="rounded-full border-2 w-11 p-1 items-center justify-items-center hover:bg-base-300 border-base-200"
+                  >
+                    <div class="rounded-full bg-base-300 w-6 m-1">
+                      <a
+                        href="https://github.com/TheGreenSlash/TournamentApp"
+                        target="_blank"
+                      >
+                        <img
+                          class="mask mask-circle m-0"
+                          src="./static/images/github-logo.svg"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+    </section>
+  </body>
+  <script>
+    function setTheme(theme) {
+      if (!theme) return;
+
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  </script>
+</html>

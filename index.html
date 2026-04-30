@@ -1,0 +1,301 @@
+<!doctype html>
+<html data-theme="" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+
+      document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("themeDropdown");
+        if (!dropdown) return;
+
+        // Close if click is outside the dropdown
+        if (!dropdown.contains(event.target)) {
+          dropdown.removeAttribute("open");
+        }
+      });
+    </script>
+    <link rel="icon" type="image/x-icon" href="./static/images/avatar.JPG" />
+    <link rel="stylesheet" href="./static/css/src/output.css" />
+    <title>Ronak's Page</title>
+  </head>
+  <body>
+    <nav id="nav" class="max-w-full">
+      <div class="navbar bg-base-200 pt-5">
+        <div class="flex-1">
+          <a href="index.html" class="btn rounded-full text-xl">Ronak Verma</a>
+        </div>
+        <a
+          href="./static/resume/Ronak_Verma_Resume.pdf"
+          target="_blank"
+          class="btn btn-sm"
+        >
+          Resume<svg
+            class="w-4 h-4 -rotate-45"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M13.3 17.275q-.3-.3-.288-.725.013-.425.313-.725L16.15 13H5q-.425 0-.713-.288Q4 12.425 4 12t.287-.713Q4.575 11 5 11h11.15l-2.825-2.825q-.3-.3-.3-.713 0-.412.3-.712t.713-.3q.412 0 .712.3L19.3 11.3q.15.15.213.325.062.175.062.375t-.062.375q-.063.175-.213.325l-4.55 4.55q-.3.3-.725.3-.425 0-.725-.3Z"
+            />
+          </svg>
+        </a>
+        <div class="flex-none px-5">
+          <details id="themeDropdown" class="dropdown">
+            <summary class="btn rounded-full text-lg w-24 bg-base-300">
+              theme
+            </summary>
+            <ul class="menu dropdown-content z-1 justify-items-start">
+              <li>
+                <button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('dark')"
+                >
+                  dark</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('light')"
+                >
+                  light</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('valentine')"
+                >
+                  valentine</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('aqua')"
+                >
+                  aqua</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('forest')"
+                >
+                  forest</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('coffee')"
+                >
+                  coffee
+                </button>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </nav>
+    <div id="content">
+      <section name="home">
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            const sequences = {
+              a: {
+                keys: document.querySelectorAll(".seq-key-a"),
+                index: 0,
+                url: "blogs.html",
+              },
+              s: {
+                keys: document.querySelectorAll(".seq-key-s"),
+                index: 0,
+                url: "projects.html",
+              },
+              d: {
+                keys: document.querySelectorAll(".seq-key-d"),
+                index: 0,
+                url: "about.html",
+              },
+            };
+
+            document.addEventListener("keydown", (e) => {
+              const key = e.key.toLowerCase();
+              if (!sequences[key]) return; // Ignore other keys
+
+              const seq = sequences[key];
+              // If wrong key pressed, remove last highlight
+              for (let k in sequences) {
+                if (k !== key && sequences[k].index > 0) {
+                  const lastKey = sequences[k].keys[sequences[k].index - 1];
+                  lastKey.classList.remove(
+                    "bg-amber-500",
+                    "text-black",
+                    "border-b-2",
+                  );
+                  sequences[k].index--;
+                }
+              }
+
+              if (seq.index < seq.keys.length) {
+                seq.keys[seq.index].classList.add(
+                  "bg-amber-500",
+                  "text-black",
+                  "border-b-2",
+                );
+                seq.index++;
+                // Navigate when sequence completed (index > 1)
+                if (seq.index > 1) {
+                  window.location.href = seq.url;
+                }
+              }
+            });
+          });
+        </script>
+
+        <div class="hero bg-base-200 min-h-screen">
+          <div class="hero-content text-center justify-items-center">
+            <div class="max-w-md">
+              <div class="justify-items-center">
+                <div class="hover-3d">
+                  <!-- content -->
+                  <figure class="max-w-50 rounded-full">
+                    <img src="./static/images/card-avatar.jpg" alt="3D card" />
+                  </figure>
+                  <!-- 8 empty divs needed for the 3D effect -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <p class="py-4 font-extralight text-center italic">Let it go</p>
+              <div class="mb-5">
+                <span class="text-rotate text-4xl">
+                  <span class="justify-items-center">
+                    <span>STUDENT</span>
+                    <span>DEVELOPER</span>
+                    <span>ENTHUSIAST</span>
+                  </span>
+                </span>
+              </div>
+              <div class="mb-4 justify-items-center">
+                <div class="overflow-x-auto">
+                  <table
+                    class="table table-zebra w-full justify-items-center place-items-center rounded-b-none border-b-4 border-b-base-300"
+                  >
+                    <tbody>
+                      <!-- row 1 -->
+                      <tr class="h-15">
+                        <th
+                          id="blogs-row"
+                          class="px-0"
+                          data-blogs-url="blogs.html"
+                        >
+                          <kbd
+                            class="kbd rounded-full border-amber-500 border-2 border-b-4 seq-key-a"
+                            >a</kbd
+                          ><kbd
+                            class="kbd rounded-full border-amber-500 border-2 border-b-4 seq-key-a"
+                            >a</kbd
+                          >
+                        </th>
+                        <td class="text-center px-0">
+                          <a href="blogs.html"> Blogs </a>
+                        </td>
+                        <td class="px-0">Maybe I'll write sometimes</td>
+                      </tr>
+                      <!-- row 2 -->
+                      <tr class="h-15">
+                        <th class="px-0" data-projects-url="projects.html">
+                          <kbd
+                            class="kbd rounded-full border-amber-500 border-2 border-b-4 seq-key-s"
+                            >s</kbd
+                          ><kbd
+                            class="kbd rounded-full border-amber-500 border-2 border-b-4 seq-key-s"
+                            >s</kbd
+                          >
+                        </th>
+                        <td class="text-center px-10">
+                          <a href="projects.html">Projects</a>
+                        </td>
+                        <td class="px-0">Making things one at a time</td>
+                      </tr>
+                      <!-- row 3 -->
+                      <tr class="h-15 place-content-center">
+                        <th class="px-0">
+                          <kbd
+                            class="kbd rounded-full border-amber-500 border-2 border-b-4 seq-key-d"
+                            >d</kbd
+                          ><kbd
+                            class="kbd rounded-full border-amber-500 border-2 border-b-4 seq-key-d"
+                            >d</kbd
+                          >
+                        </th>
+                        <td class="text-center px-10">
+                          <a href="about.html">About</a>
+                        </td>
+                        <td class="px-0">Know about me</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="justify-items-center">
+                <div class="flex w-full items-center gap-6">
+                  <div class="flex-1 flex justify-center">
+                    <a href="https://github.com/TheGreenSlash" target="_blank">
+                      <div class="avatar">
+                        <div class="w-10 rounded">
+                          <img src="./static/images/github-logo.svg" />
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="w-px h-10 bg-neutral opacity-50"></div>
+
+                  <div class="flex-1 flex justify-center">
+                    <a href="mailto:ronakverma121@gmail.com" target="_blank">
+                      <div class="avatar">
+                        <div class="w-10 rounded">
+                          <img src="./static/images/mails.svg" />
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="w-px h-10 bg-neutral opacity-50"></div>
+
+                  <div class="flex-1 flex justify-center">
+                    <a
+                      href="https://linkedin.com/in/ronak-verma-554074201"
+                      target="_blank"
+                    >
+                      <div class="avatar">
+                        <div class="w-10 rounded">
+                          <img src="./static/images/linkedin.svg" />
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script src="./static/scripts/keypress.js" defer></script>
+      </section>
+    </div>
+    <script>
+      function setTheme(theme) {
+        if (!theme) return;
+
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+      }
+    </script>
+  </body>
+</html>

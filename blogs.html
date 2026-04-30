@@ -1,0 +1,127 @@
+<!doctype html>
+<html data-theme="" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      (function () {
+        const theme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+
+      document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("themeDropdown");
+        if (!dropdown) return;
+
+        // Close if click is outside the dropdown
+        if (!dropdown.contains(event.target)) {
+          dropdown.removeAttribute("open");
+        }
+      });
+    </script>
+    <link rel="icon" type="image/x-icon" href="./static/images/avatar.JPG" />
+    <link rel="stylesheet" href="./static/css/src/output.css" />
+    <title>Ronak's Page</title>
+  </head>
+  <body>
+    <nav id="nav" class="max-w-full">
+      <div class="navbar bg-base-200 pt-5">
+        <div class="flex-1">
+          <a href="index.html" class="btn rounded-full text-xl">Ronak Verma</a>
+        </div>
+        <a
+          href="./static/resume/Ronak_Verma_Resume.pdf"
+          target="_blank"
+          class="btn btn-sm"
+        >
+          Resume<svg
+            class="w-4 h-4 -rotate-45"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M13.3 17.275q-.3-.3-.288-.725.013-.425.313-.725L16.15 13H5q-.425 0-.713-.288Q4 12.425 4 12t.287-.713Q4.575 11 5 11h11.15l-2.825-2.825q-.3-.3-.3-.713 0-.412.3-.712t.713-.3q.412 0 .712.3L19.3 11.3q.15.15.213.325.062.175.062.375t-.062.375q-.063.175-.213.325l-4.55 4.55q-.3.3-.725.3-.425 0-.725-.3Z"
+            />
+          </svg>
+        </a>
+        <div class="flex-none px-5">
+          <details id="themeDropdown" class="dropdown">
+            <summary class="btn rounded-full text-lg w-24 bg-base-300">
+              theme
+            </summary>
+            <ul class="menu dropdown-content z-1 justify-items-start">
+              <li>
+                <button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('dark')"
+                >
+                  dark</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('light')"
+                >
+                  light</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('valentine')"
+                >
+                  valentine</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('aqua')"
+                >
+                  aqua</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('forest')"
+                >
+                  forest</button
+                ><button
+                  class="btn rounded-full w-24"
+                  onclick="setTheme('coffee')"
+                >
+                  coffee
+                </button>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </nav>
+    <!-- add the blogs page from here, the upper html is necessary for daisyui and the nav itself -->
+    <section name="blogs">
+      <div class="bg-center justify-items-center bg-base-200 min-h-screen">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <div class="titlediv">
+              <h1 class="text-4xl font-bold">List of Blogs</h1>
+            </div>
+            <br />
+
+            <div class="mt-5">
+              <a href=""
+                ><h1 class="text-2xl font-bold underline" id="blog-title"></h1
+              ></a>
+              <p class="shadow-amber-50" id="blog-date"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="./dist/blogs-list.bundle.js"></script>
+  <script>
+    function setTheme(theme) {
+      if (!theme) return;
+
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  </script>
+</html>
